@@ -2,7 +2,7 @@
   "name": "db-recipe-book",
   "version": "1.0.0",
   "main": "index.js",
-  "script": {
+  "scripts": {
     "server": "nodemon",
     "start": "node index.js"
   },
