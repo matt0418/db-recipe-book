@@ -5,9 +5,9 @@ const db = knex(config.development)
 module.exports = {
     getDishes,
     getDish,
-    addDish
-    // getRecipes,
-    // addRecipe
+    addDish,
+    getRecipes,
+    addRecipe
 }
 
 function getDishes() {
@@ -27,5 +27,19 @@ function getDish(id) {
 
 async function addDish(dish) {
     const [id] = await db('dishes').insert(dish)
-    return getDish(id)
+    return db('dishes')
+        .where({ id })
+        .first()
+}
+
+function getRecipes() {
+    let rows = db('recipes').orderBy('id', 'asc')
+    return rows
+}
+
+async function addRecipe(recipe) {
+    const [id] = await db('recipes').insert(recipe)
+    return db('recipes')
+        .where({ id })
+        .first()
 }

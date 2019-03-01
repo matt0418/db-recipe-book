@@ -30,13 +30,12 @@ router.post('/', async (req, res) => {
     } else {
         try {
             const dish = await Recipe.addDish(req.body)
-            res.status(201),json(dish)
+            return res.status(201).json(dish)
         } catch(error) {
             console.log(error)
             res.status(500).json({error: "There was an error adding the dish"})
         }
     }
-
 })
 
 module.exports = router
